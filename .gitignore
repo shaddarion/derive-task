@@ -3,3 +3,13 @@
 ################################################################################
 
 /ApplicationFramework/bin/Debug/netcoreapp3.1
+/.vs/DeriveTechnicalTask
+/ApplicationFramework/obj/Debug/netcoreapp3.1
+/ApplicationFramework/obj
+/ApplicationSettings/obj
+/AutomationFramework/bin/Debug/netcoreapp3.1
+/AutomationFramework/obj
+/AutomationTests/bin/Debug/netcoreapp3.1
+/AutomationTests/obj
+/SettingManager/bin/Debug/netcoreapp3.1
+/SettingManager/obj
