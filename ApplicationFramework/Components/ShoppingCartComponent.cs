@@ -19,7 +19,7 @@ namespace ApplicationFramework.Components
         {
             get
             {
-                var addedItems = Driver.FindElement(QuantityItems).Text;
+                var addedItems = Driver.FindElement(QuantityItems).GetAttribute("innerText");
                 return Convert.ToInt32(addedItems);
             }
         }

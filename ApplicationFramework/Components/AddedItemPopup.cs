@@ -1,6 +1,11 @@
-﻿using AutomationFramework.ExtensionMethods;
+﻿using System;
+using System.Threading;
+using ApplicationFramework.Pages;
+using AutomationFramework.ExtensionMethods;
 using AutomationFramework.Providers;
+using FluentAssertions;
 using OpenQA.Selenium;
+using SettingManager;
 
 namespace ApplicationFramework.Components
 {
@@ -14,11 +19,15 @@ namespace ApplicationFramework.Components
         public void Click_ContinueShopping_button()
         {
             Driver.FindElement(Button_ContinueShopping).Ex_Click();
+            SpinWait.SpinUntil(() =>
+                Driver.FindElement(By.Id("layer_cart")).GetAttribute("style").Contains("display: none"), 
+                TimeSpan.FromSeconds(ApplicationSettings.DefaultWaitTime)).Should().BeTrue("Add item popup has not been closed by clicking Continue Shopping button");
         }
 
-        public void Click_ProceedToCheckout_button()
+        public ShoppingCartSummaryPage Click_ProceedToCheckout_button()
         {
             Driver.FindElement(Button_ProceedToCheckout).Click();
+            return new ShoppingCartSummaryPage();
         }
     }
 }

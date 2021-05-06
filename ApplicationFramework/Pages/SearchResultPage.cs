@@ -1,7 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using ApplicationFramework.Components;
+using FluentAssertions;
 using OpenQA.Selenium;
+using SettingManager;
 
 namespace ApplicationFramework.Pages
 {
@@ -10,11 +14,12 @@ namespace ApplicationFramework.Pages
         private By Items => By.XPath("//ul[contains(@class, 'product_list')]/*");
         private By Button_CloseQuickViewPopup => By.CssSelector(".fancybox-close");
 
-
         public SearchResultPage Click_CloseQuickViewPopup_Button()
         {
             Driver.SwitchTo().Window(Driver.CurrentWindowHandle);
             Driver.FindElement(Button_CloseQuickViewPopup).Click();
+            SpinWait.SpinUntil(() => 
+                !Driver.PageSource.Contains("fancybox-iframe"), TimeSpan.FromSeconds(ApplicationSettings.DefaultWaitTime)).Should().BeTrue("It's impossible to close Quick View popup");
             return this;
         }
 

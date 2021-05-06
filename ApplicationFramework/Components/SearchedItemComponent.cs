@@ -25,6 +25,9 @@ namespace ApplicationFramework.Components
         public SearchedItemComponent(IWebElement item)
         {
             _item = item;
+            Name = string.Empty;
+            Price = string.Empty;
+            Colors = new List<string>();
         }
 
         public SearchedItemComponent Parse()
@@ -38,6 +41,7 @@ namespace ApplicationFramework.Components
         public SearchedItemComponent Hover()
         {
             Driver.Ex_HoverElement(_item);
+            FluentWaitProvider.FluentWait.Until(x => _item.GetAttribute("class").Contains("hovered"));
             return this;
         }
 

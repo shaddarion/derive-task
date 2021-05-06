@@ -7,6 +7,6 @@
     <Parameter name="needMaximizeWindow" value="false" />
     <Parameter name="headless" value="false" />
     <Parameter name="pageLoadTime" value="60" />
-    <Parameter name="defaultWaitTime" value="30" /> 
+    <Parameter name="defaultWaitTime" value="10" /> 
   </TestRunParameters>
 </RunSettings>
